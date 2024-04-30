@@ -2,7 +2,9 @@ package com.capstone.diary.member.controller;
 
 
 
+import com.capstone.diary.member.dto.MemberInfoDto;
 import com.capstone.diary.member.service.MemberService;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +20,8 @@ public class MemberController {
     private final MemberService memberService;
 
     @GetMapping()
-    public void getMemberInfo(){
-        memberService.getMemberInfo();
+    @Operation(operationId = "getMember")
+    public MemberInfoDto getMemberInfo(){
+        return memberService.getMemberInfo();
     }
 }

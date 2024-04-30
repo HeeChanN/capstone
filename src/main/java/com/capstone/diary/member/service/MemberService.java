@@ -1,6 +1,7 @@
 package com.capstone.diary.member.service;
 
 
+import com.capstone.diary.exception.common.NoDataInDatabaseException;
 import com.capstone.diary.member.dto.MemberInfoDto;
 import com.capstone.diary.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,8 +17,8 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
 
-    public void getMemberInfo() {
+    public MemberInfoDto getMemberInfo() throws NoDataInDatabaseException {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        log.info(authentication.getName());
+        return new MemberInfoDto(memberRepository.findByLoginId(authentication.getName()).orElseThrow(()-> new NoDataInDatabaseException("해당 유저 정보가 존재하지 않습니다.")));
     }
 }
