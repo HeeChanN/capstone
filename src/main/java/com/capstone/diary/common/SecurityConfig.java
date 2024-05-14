@@ -55,7 +55,7 @@ public class SecurityConfig  {
                 .httpBasic(httBasic->httBasic.disable())
                 .authorizeHttpRequests(authorize -> authorize
                                 .requestMatchers("/", "/swagger-ui/**", "/v3/**","/swagger-ui.html").permitAll()
-                                .requestMatchers("/api/member").hasRole("USER")
+                                .requestMatchers("/api/members/**","/api/pets/**").hasRole("USER")
                                 .requestMatchers("/api/auth/login","/api/auth/signup").permitAll()
                         .anyRequest().authenticated()
                 )
@@ -77,7 +77,7 @@ public class SecurityConfig  {
     public CorsConfigurationSource corsConfigurationSource(){
         CorsConfiguration configuration = new CorsConfiguration();
 
-        configuration.addAllowedOrigin("*");
+        configuration.addAllowedOriginPattern("*");
         configuration.setAllowedMethods(Arrays.asList("*"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
         configuration.setAllowCredentials(true);

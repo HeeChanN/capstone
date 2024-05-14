@@ -6,6 +6,7 @@ import com.capstone.diary.auth.dto.LoginDto;
 import com.capstone.diary.auth.dto.LoginResDto;
 import com.capstone.diary.auth.dto.MemberCreateDto;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -26,8 +27,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public LoginResDto login(@RequestBody LoginDto loginDto) {
-        log.info("로그인 시작");
+    public LoginResDto login(@RequestBody LoginDto loginDto ) {
         return authService.login(loginDto);
     }
 }

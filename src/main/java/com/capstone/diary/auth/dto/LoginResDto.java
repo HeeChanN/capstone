@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class LoginResDto {
+    private Long memberId;
     private String access_token;
     private String loginId;
     private String email;
@@ -15,6 +16,7 @@ public class LoginResDto {
     private String name;
 
     public LoginResDto(String access_token, Member member) {
+        this.memberId = member.getId();
         this.access_token = access_token;
         this.loginId = member.getLoginId();
         this.email = member.getEmail();
