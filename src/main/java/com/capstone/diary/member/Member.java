@@ -46,11 +46,14 @@ public class Member {
         this.name = memberCreateDto.getName();
     }
 
-    public void updateMember(MemberCreateDto memberCreateDto, String password) {
+    public void updateMember(MemberCreateDto memberCreateDto) {
         this.loginId = memberCreateDto.getLoginId();
-        this.password = password;
         this.email = memberCreateDto.getEmail();
         this.phoneNumber = memberCreateDto.getPhoneNumber();
         this.name = memberCreateDto.getName();
+    }
+
+    public void updatePassword(String password) {
+        this.password = password;
     }
 }

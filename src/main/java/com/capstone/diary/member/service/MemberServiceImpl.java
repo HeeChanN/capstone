@@ -38,7 +38,11 @@ public class MemberServiceImpl implements MemberService {
         if (!member.getLoginId().equals(SecurityContextHolder.getContext().getAuthentication().getName())) {
             throw new NoMatchException("올바른 접근이 아닙니다.");
         }
-        member.updateMember(memberCreateDto,passwordEncoder.encode(memberCreateDto.getPassword()));
+
+        member.updateMember(memberCreateDto);
+        if(memberCreateDto.getPassword() != null) {
+            member.updatePassword(passwordEncoder.encode(memberCreateDto.getPassword()));
+        }
         return new MemberInfoDto(member);
     }
 }
