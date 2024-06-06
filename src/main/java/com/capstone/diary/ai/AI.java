@@ -2,14 +2,12 @@ package com.capstone.diary.ai;
 
 
 import com.capstone.diary.ai.dto.AIMessageDto;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.capstone.diary.pet.Pet;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @NoArgsConstructor
@@ -21,10 +19,14 @@ public class AI {
     private Long id;
 
     private String message;
-    private LocalDateTime dateTime;
+    private LocalDate date;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "petId")
+    private Pet pet;
 
     public AI(AIMessageDto aiMessageDto) {
         this.message = aiMessageDto.getMessage();
-        this.dateTime = aiMessageDto.getDateTime();
+        this.date = aiMessageDto.getDateTime();
     }
 }

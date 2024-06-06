@@ -6,17 +6,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Getter
 @NoArgsConstructor
 @ToString
 public class AIMessageDto {
     private String message;
-    private LocalDateTime dateTime;
+    private LocalDate dateTime;
 
     public AIMessageDto(AI ai) {
         this.message = ai.getMessage();
-        this.dateTime = ai.getDateTime();
+        this.dateTime = ai.getDate();
     }
 }

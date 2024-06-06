@@ -40,8 +40,11 @@ public class PetServiceImpl implements PetService {
         return new PetResDto(pet);
     }
 
-    @Override
     public List<PetListDto> getAllPets(Long memberId) {
         return petRepository.findAllByMemberId(memberId).stream().map(PetListDto::new).toList();
+    }
+
+    public PetResDto getPet(Long petId)throws NoDataInDatabaseException {
+        return new PetResDto(petRepository.findById(petId).orElseThrow(()-> new NoDataInDatabaseException("반려동물")));
     }
 }

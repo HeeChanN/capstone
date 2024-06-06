@@ -10,11 +10,12 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/ai")
+@RequestMapping("/api/ai")
 @Slf4j
 @Tag(name = "AI API", description = "AI 분석 결과를 가져오는 API")
 public class AIController {
@@ -29,7 +30,8 @@ public class AIController {
 
     @AIMessageGetApi
     @GetMapping("/message")
-    public List<AIMessageDto> getMessage() {
-        return aiService.getAIMessageDto();
+    public AIMessageDto getMessage(@RequestParam("petId") Long petId,
+                                   @RequestParam("date") LocalDate date) {
+        return aiService.getDiary(petId,date);
     }
 }

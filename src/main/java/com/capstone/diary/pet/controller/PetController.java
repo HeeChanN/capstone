@@ -8,6 +8,7 @@ import com.capstone.diary.pet.service.PetService;
 import com.capstone.diary.pet.swagger.PetCreateApi;
 import com.capstone.diary.pet.swagger.PetUpdateApi;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,5 +29,10 @@ public class PetController {
     @PatchMapping("/{petId}")
     public PetResDto updatePet(@PathVariable("petId") Long petId, @RequestBody PetUpdateDto petUpdateDto) {
         return petService.updatePet(petId, petUpdateDto);
+    }
+
+    @GetMapping("/{petId}")
+    public PetResDto getPet(@PathVariable("petId") Long petId) {
+        return petService.getPet(petId);
     }
 }

@@ -1,6 +1,7 @@
 package com.capstone.diary.pet.service;
 
 
+import com.capstone.diary.exception.common.NoDataInDatabaseException;
 import com.capstone.diary.pet.dto.PetCreateDto;
 import com.capstone.diary.pet.dto.PetListDto;
 import com.capstone.diary.pet.dto.PetResDto;
@@ -12,4 +13,6 @@ public interface PetService {
     public PetResDto createPet(Long memberId, PetCreateDto petCreateDto);
     public PetResDto updatePet(Long petId, PetUpdateDto petUpdateDto);
     public List<PetListDto> getAllPets(Long memberId);
+
+    public PetResDto getPet(Long petId) throws NoDataInDatabaseException;
 }

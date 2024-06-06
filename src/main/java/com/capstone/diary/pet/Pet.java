@@ -1,5 +1,8 @@
 package com.capstone.diary.pet;
 
+import com.capstone.diary.action.Action;
+import com.capstone.diary.ai.AI;
+import com.capstone.diary.emotion.Emotion;
 import com.capstone.diary.image.Image;
 import com.capstone.diary.member.Member;
 import com.capstone.diary.pet.dto.PetCreateDto;
@@ -34,6 +37,15 @@ public class Pet {
 
     @OneToMany(mappedBy = "pet",fetch = FetchType.LAZY,cascade = {CascadeType.REMOVE,CascadeType.PERSIST},orphanRemoval = true)
     private List<Image> images = new ArrayList<>();
+
+    @OneToMany(mappedBy = "pet",fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
+    private List<Action> actions = new ArrayList<>();
+
+    @OneToMany(mappedBy = "pet",fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
+    private List<Emotion> emotions = new ArrayList<>();
+
+    @OneToMany(mappedBy = "pet",fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
+    private List<AI> ai = new ArrayList<>();
 
     public Pet(PetCreateDto petCreateDto, Member member) {
         this.name = petCreateDto.getName();
