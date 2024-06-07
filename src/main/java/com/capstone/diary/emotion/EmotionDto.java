@@ -11,20 +11,16 @@ import java.time.LocalDate;
 public class EmotionDto {
     private LocalDate date;
 
-    private Integer happinessJoy;
-    private Integer comfortStability;
-    private Integer anxietySadness;
-    private Integer angerDispleasure;
-    private Integer fear;
-    private Integer aggression;
+    private Integer happy;
+    private Integer sad;
+    private Integer angry;
+    private Integer relaxed;
 
     public EmotionDto(Emotion emotion) {
         this.date = emotion.getDate();
-        this.happinessJoy = emotion.getHappinessJoy();
-        this.comfortStability = emotion.getComfortStability();
-        this.anxietySadness = emotion.getAnxietySadness();
-        this.angerDispleasure = emotion.getAngerDispleasure();
-        this.fear = emotion.getFear();
-        this.aggression = emotion.getAggression();
+        this.happy = emotion.getHappy();
+        this.sad = emotion.getSad();
+        this.angry = emotion.getAngry();
+        this.relaxed = emotion.getRelaxed();
     }
 }

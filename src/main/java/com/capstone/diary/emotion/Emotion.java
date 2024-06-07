@@ -19,13 +19,10 @@ public class Emotion {
 
     private LocalDate date;
 
-    private Integer happinessJoy;
-    private Integer comfortStability;
-    private Integer anxietySadness;
-    private Integer angerDispleasure;
-    private Integer fear;
-    private Integer aggression;
-
+    private Integer happy;
+    private Integer sad;
+    private Integer angry;
+    private Integer relaxed;
 
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -35,11 +32,9 @@ public class Emotion {
     public Emotion(LocalDate date, Pet pet) {
         this.date = date;
         this.pet = pet;
-        this.happinessJoy = 0;
-        this.comfortStability = 0;
-        this.anxietySadness = 0;
-        this.angerDispleasure = 0;
-        this.fear = 0;
-        this.aggression = 0;
+        this.happy = 0;
+        this.sad = 0;
+        this.angry = 0;
+        this.relaxed = 0;
     }
 }
